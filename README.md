@@ -1,2 +1,0 @@
-# ryanzico.github.io
-Portfolio
