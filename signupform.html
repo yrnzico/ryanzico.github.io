@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Form</title>
+   <style>
+      body{
+         background: rgb(240, 240, 240);
+         font-family: calibri, sans-serif;
+         transition: 0.3s;
+      }
+
+      #table{
+         padding: 15px 0;
+         background: white;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgb(112, 112, 112);
+         text-align: center;
+         width: 300px;
+         margin-top: 100px;
+         transition: 0.3s;
+      }
+
+      th{
+         font-family: candara;
+         font-size: 30px;
+         padding: 0px 0 7px 0;
+         color: rgb(255, 127, 53);
+         text-shadow: 0 5px 5px rgb(97, 97, 97);
+      }
+
+      td{
+         padding: 9px 0;
+      }
+
+      input{
+         width: 240px;
+         padding: 12px 10px;
+         border-radius: 50px;
+         font-size: 13px;
+         box-shadow: inset 0 0 8px rgb(112, 112, 112);
+         border: 1px solid transparent;
+         outline: none;
+         color: rgb(82, 82, 82);
+         transition: 0.3s;
+      }
+
+      input:hover{
+         width: 245px;
+      }
+
+      button{
+         width: 258px;
+         padding: 12px 8px;
+         border-radius: 50px;
+         cursor: pointer;
+         outline: none;
+         border: 1px solid transparent;
+         background: linear-gradient(rgb(255, 188, 63),rgb(255, 102, 0));
+         box-shadow: 0 0 10px rgb(97, 97, 97);
+         transition: 0.5s;
+         color: rgb(70, 70, 70);
+         font-size: 15px;
+         font-weight: bold;
+      }
+
+      button:hover{
+         background: linear-gradient(rgb(255, 211, 130),rgb(255, 150, 80));
+      }
+
+      #mode{
+         text-decoration: none;
+         color: rgb(194, 78, 0);
+         cursor: pointer;
+         user-select: none;
+         -moz-user-select: none;
+         -o-user-select: none;
+         -webkit-user-select: none;
+      }
+
+      #mode2{
+         text-decoration: none;
+         color: rgb(194, 78, 0);
+         cursor: pointer;
+         user-select: none;
+         -moz-user-select: none;
+         -o-user-select: none;
+         -webkit-user-select: none;
+         display: none;
+      }
+   </style>
+</head>
+<body id="body">
+   <form action="" method="post">
+      <center>
+      <table id="table">
+         <tr><th>Sign Up</th></tr>
+
+         <tr>
+            <td><input type="text" name="name" class="tf" id="name" placeholder="Fullname" required></td>
+         </tr>
+
+         <tr>
+            <td><input type="text" name="uname" id="uname" placeholder="Username" required></td>
+         </tr>
+
+         <tr>
+            <td><input type="email" name="email" id="email" placeholder="Email" required></td>
+         </tr>
+
+         <tr>
+            <td><input type="password" name="password" id="password" placeholder="Password" required></td>
+         </tr>
+
+         <tr>
+            <td>
+               <center><button type="submit">Sign Up</button></center><br>
+            </td>
+         </tr>
+
+         <tr>
+            <td style="padding: 0;">
+               <div style="text-align: right; margin: -17px 20px 0 0px;">
+                  <u id="mode" onclick="changemode()">Dark mode</u>
+                  <u id="mode2" onclick="changemode2()">Light mode</u>
+               </div>
+            </td>
+         </tr>
+      </table>
+      </center>
+   </form>
+
+   <script>
+      function changemode() {
+         var table = document.getElementById("table");
+         var body = document.getElementById("body");
+         var mode = document.getElementById("mode");
+         var mode2 = document.getElementById("mode2");
+         var name = document.getElementById("name");
+         var uname = document.getElementById("uname");
+         var email = document.getElementById("email");
+         var password = document.getElementById("password");
+         if(table.style.background = "white") {
+            table.style.background = "#2b2b2b";
+            table.style.boxShadow = "0 0 10px black";
+            body.style.background = "rgb(50,50,50)";
+            mode.style.display = "none";
+            mode2.style.display = "block";
+            name.style.background = "rgb(60,60,60)";
+            name.style.boxShadow = "inset 0 0 10px black";
+            name.style.color = "rgb(170,170,170)";
+            uname.style.background = "rgb(60,60,60)";
+            uname.style.boxShadow = "inset 0 0 10px black";
+            uname.style.color = "rgb(170,170,170)";
+            email.style.background = "rgb(60,60,60)";
+            email.style.boxShadow = "inset 0 0 10px black";
+            email.style.color = "rgb(170,170,170)";
+            password.style.background = "rgb(60,60,60)";
+            password.style.boxShadow = "inset 0 0 10px black";
+            password.style.color = "rgb(170,170,170)";
+         }
+      }
+
+      function changemode2() {
+         var table = document.getElementById("table");
+         var body = document.getElementById("body");
+         var mode = document.getElementById("mode");
+         var mode2 = document.getElementById("mode2");
+         var name = document.getElementById("name");
+         var uname = document.getElementById("uname");
+         var email = document.getElementById("email");
+         var password = document.getElementById("password");
+         if(table.style.background = "#2b2b2b") {
+            table.style.background = "white";
+            table.style.boxShadow = "0 0 10px rgb(112,112,112)";
+            body.style.background = "rgb(240,240,240)";
+            mode.style.display = "block";
+            mode2.style.display = "none";
+            name.style.background = "white";
+            name.style.boxShadow = "inset 0 0 8px rgb(112, 112, 112)";
+            name.style.color = "rgb(82, 82, 82)";
+            uname.style.background = "white";
+            uname.style.boxShadow = "inset 0 0 8px rgb(112, 112, 112)";
+            uname.style.color = "rgb(82, 82, 82)";
+            email.style.background = "white";
+            email.style.boxShadow = "inset 0 0 8px rgb(112, 112, 112)";
+            email.style.color = "rgb(82, 82, 82)";
+            password.style.background = "white";
+            password.style.boxShadow = "inset 0 0 8px rgb(112, 112, 112)";
+            password.style.color = "rgb(82, 82, 82)";
+         }
+      }
+   </script>
+</body>
+</html>
