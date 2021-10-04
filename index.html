@@ -1,196 +1,356 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Form</title>
-   <style>
-      body{
-         background: rgb(240, 240, 240);
-         font-family: calibri, sans-serif;
-         transition: 0.3s;
-      }
+<title>Feel like designing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{
+  padding:0;
+  margin:0;
+  scroll-behavior:smooth;
+}
 
-      #table{
-         padding: 15px 0;
-         background: white;
-         border-radius: 8px;
-         box-shadow: 0 0 10px rgb(112, 112, 112);
-         text-align: center;
-         width: 300px;
-         margin-top: 100px;
-         transition: 0.3s;
-      }
+a,input,button{
+  outline:none;
+}
 
-      th{
-         font-family: candara;
-         font-size: 30px;
-         padding: 0px 0 7px 0;
-         color: rgb(255, 127, 53);
-         text-shadow: 0 5px 5px rgb(97, 97, 97);
-      }
+body{
+  background:black;
+  color:white;
+  font-family:calibri, sans-serif;
+}
 
-      td{
-         padding: 9px 0;
-      }
+#shadowdiv{
+  position:fixed;
+  border:none;
+  width:100%;
+  margin-top:-15px;
+  box-shadow:0 1px 30px 80px black;
+}
 
-      input{
-         width: 240px;
-         padding: 12px 10px;
-         border-radius: 50px;
-         font-size: 13px;
-         box-shadow: inset 0 0 8px rgb(112, 112, 112);
-         border: 1px solid transparent;
-         outline: none;
-         color: rgb(82, 82, 82);
-         transition: 0.3s;
-      }
+#darkdiv{
+  height:100vh;
+  width:100%;
+  position:fixed;
+  transition:0.4s;
+  background:rgba(0,0,0,0.85);
+  opacity:0;
+}
 
-      input:hover{
-         width: 245px;
-      }
+#header{
+  position:fixed;
+  padding:15px 10px;
+  text-align:center;
+  width:100%;
+}
 
-      button{
-         width: 258px;
-         padding: 12px 8px;
-         border-radius: 50px;
-         cursor: pointer;
-         outline: none;
-         border: 1px solid transparent;
-         background: linear-gradient(rgb(255, 188, 63),rgb(255, 102, 0));
-         box-shadow: 0 0 10px rgb(97, 97, 97);
-         transition: 0.5s;
-         color: rgb(70, 70, 70);
-         font-size: 15px;
-         font-weight: bold;
-      }
+#header img{
+  float:left;
+  width:40px;
+  height:40px;
+  margin-top:-7px;
+}
 
-      button:hover{
-         background: linear-gradient(rgb(255, 211, 130),rgb(255, 150, 80));
-      }
+#hname{
+  margin-top:-35px;
+  margin-left:-45px;
+  font-size:23px;
+  position:absolute;
+  opacity:0;
+  transition:0.4s;
+}
 
-      #mode{
-         text-decoration: none;
-         color: rgb(194, 78, 0);
-         cursor: pointer;
-         user-select: none;
-         -moz-user-select: none;
-         -o-user-select: none;
-         -webkit-user-select: none;
-      }
+#mainimg{
+  position:fixed;
+  width:700px;
+  height:940px;
+  left:50%;
+  transform:translateX(-50%);
+}
 
-      #mode2{
-         text-decoration: none;
-         color: rgb(194, 78, 0);
-         cursor: pointer;
-         user-select: none;
-         -moz-user-select: none;
-         -o-user-select: none;
-         -webkit-user-select: none;
-         display: none;
-      }
-   </style>
+#mainimg img{
+  width:100%;
+  height:100%;
+  filter:grayscale(90%);
+}
+
+#menubtn{
+  float:right;
+  margin:-5px 20px 0 0;
+  background:transparent;
+  border:none;
+  width:27px;
+  height:33px;
+  cursor:pointer;
+}
+
+#menubtn div{
+  border:1px solid white;
+  height:0;
+  margin:6px 0;
+}
+
+#mb1, #mb2, #mb3{
+  transform-origin:0% 0%;
+  transition:0.4s;
+}
+
+#mainname{
+  position:fixed;
+  width:100%;
+  padding:5em 0;
+  font-size:80px;
+  font-weight:900;
+  text-align:center;
+  text-shadow:0 0 3px black;
+  font-family:serif;
+  margin-top:170px;
+}
+
+#mainname span{
+  background:rgba(0,0,0,0.62);
+  box-shadow:0 0 50px 10px black;
+  border-radius:100px;
+  padding:0 10px;
+}
+
+#menu{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  text-align:center;
+  padding-top:80px;
+  transition:0.5s;
+  display:none;
+}
+
+#menu button{
+  background:transparent;
+  color:rgb(200,200,200);
+  border:1px solid transparent;
+  margin:20px 0;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.6s;
+  opacity:0;
+}
+
+#menu button:hover{
+  color:white;
+  text-shadow:0 0 10px white;
+}
+
+#mbody{
+  background:black;
+  margin-top:800px;
+  position:absolute;
+  box-shadow:0 -10px 40px 20px black;
+  padding:20px 8px;
+}
+
+
+
+
+
+
+
+@media screen and (max-width:700px){
+  #mainimg{
+    width:500px;
+    height:740px;
+  }
+  
+  #mbody{
+    margin-top:600px;
+  }
+  
+  #mainname{
+    margin-top:130px;
+    font-size:60px;
+  }
+}
+
+@media screen and (max-width:500px){
+  #mainimg{
+    width:120%;
+    height:540px;
+  }
+  
+  #mbody{
+    margin-top:500px;
+  }
+  
+  #mainname{
+    margin-top:130px;
+    font-size:45px;
+  }
+}
+</style>
 </head>
-<body id="body">
-   <form action="" method="post">
-      <center>
-      <table id="table">
-         <tr><th>Sign Up</th></tr>
 
-         <tr>
-            <td><input type="text" name="name" class="tf" id="name" placeholder="Fullname" required></td>
-         </tr>
+<body>
 
-         <tr>
-            <td><input type="text" name="uname" id="uname" placeholder="Username" required></td>
-         </tr>
+<div id="mainimg">
+  <img src="https://drive.google.com/file/d/1B0F3GGZxrnE__sxdeTMRxx21sr4WBcqJ/view?usp=sharing">
+</div>
 
-         <tr>
-            <td><input type="email" name="email" id="email" placeholder="Email" required></td>
-         </tr>
+<div id="mainname">
+  <span>RYAN ZICO</span>
+</div>
 
-         <tr>
-            <td><input type="password" name="password" id="password" placeholder="Password" required></td>
-         </tr>
+<div id="darkdiv"></div>
 
-         <tr>
-            <td>
-               <center><button type="submit">Sign Up</button></center><br>
-            </td>
-         </tr>
+<div id="mbody">
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+Lorem ipun sjsbsvsu sjs s sjs ss sjsbss sjs ss siss s sjss shss sjs ssjs siss sjs sjs sjs ssjs sjs sjs sjs sjs sjs sjs dis sjs sjs sjs sis sjs sjs sus sus sjs sus sus sis sjs sjs sjs sjs sus sus sus sus sus sjs djs dus sus </p>
+</div>
 
-         <tr>
-            <td style="padding: 0;">
-               <div style="text-align: right; margin: -17px 20px 0 0px;">
-                  <u id="mode" onclick="changemode()">Dark mode</u>
-                  <u id="mode2" onclick="changemode2()">Light mode</u>
-               </div>
-            </td>
-         </tr>
-      </table>
-      </center>
-   </form>
+<div id="shadowdiv" ></div>
 
-   <script>
-      function changemode() {
-         var table = document.getElementById("table");
-         var body = document.getElementById("body");
-         var mode = document.getElementById("mode");
-         var mode2 = document.getElementById("mode2");
-         var name = document.getElementById("name");
-         var uname = document.getElementById("uname");
-         var email = document.getElementById("email");
-         var password = document.getElementById("password");
-         if(table.style.background = "white") {
-            table.style.background = "#2b2b2b";
-            table.style.boxShadow = "0 0 10px black";
-            body.style.background = "rgb(50,50,50)";
-            mode.style.display = "none";
-            mode2.style.display = "block";
-            name.style.background = "rgb(60,60,60)";
-            name.style.boxShadow = "inset 0 0 10px black";
-            name.style.color = "rgb(170,170,170)";
-            uname.style.background = "rgb(60,60,60)";
-            uname.style.boxShadow = "inset 0 0 10px black";
-            uname.style.color = "rgb(170,170,170)";
-            email.style.background = "rgb(60,60,60)";
-            email.style.boxShadow = "inset 0 0 10px black";
-            email.style.color = "rgb(170,170,170)";
-            password.style.background = "rgb(60,60,60)";
-            password.style.boxShadow = "inset 0 0 10px black";
-            password.style.color = "rgb(170,170,170)";
-         }
-      }
+<div id="menu">
+  <button id="mo1">Option 1</button><br>
+  <button id="mo2">Option 2</button><br>
+  <button id="mo3">Option 3</button><br>
+  <button id="mo4">Option 4</button><br>
+</div>
 
-      function changemode2() {
-         var table = document.getElementById("table");
-         var body = document.getElementById("body");
-         var mode = document.getElementById("mode");
-         var mode2 = document.getElementById("mode2");
-         var name = document.getElementById("name");
-         var uname = document.getElementById("uname");
-         var email = document.getElementById("email");
-         var password = document.getElementById("password");
-         if(table.style.background = "#2b2b2b") {
-            table.style.background = "white";
-            table.style.boxShadow = "0 0 10px rgb(112,112,112)";
-            body.style.background = "rgb(240,240,240)";
-            mode.style.display = "block";
-            mode2.style.display = "none";
-            name.style.background = "white";
-            name.style.boxShadow = "inset 0 0 8px rgb(112, 112, 112)";
-            name.style.color = "rgb(82, 82, 82)";
-            uname.style.background = "white";
-            uname.style.boxShadow = "inset 0 0 8px rgb(112, 112, 112)";
-            uname.style.color = "rgb(82, 82, 82)";
-            email.style.background = "white";
-            email.style.boxShadow = "inset 0 0 8px rgb(112, 112, 112)";
-            email.style.color = "rgb(82, 82, 82)";
-            password.style.background = "white";
-            password.style.boxShadow = "inset 0 0 8px rgb(112, 112, 112)";
-            password.style.color = "rgb(82, 82, 82)";
-         }
-      }
-   </script>
+<div id="header">
+  <img src="https://drive.google.com/file/d/1vsEDfs50TJhu2opclb9XpHlqaKEvi3A3/view?usp=sharing">
+  <b id="hname">ZICO</b>
+  <button id="menubtn" onclick="togglemenu()">
+    <div id="mb1"></div>
+    <div id="mb2"></div>
+    <div id="mb3"></div>
+  </button>
+</div>
+
+
+
+
+<script>
+window.onscroll = function (){   
+  var hname = document.getElementById("hname");
+  var darkdiv = document.getElementById("darkdiv");
+  if(window.scrollY >= 145){ 
+      hname.style.marginTop = "0";
+      hname.style.opacity = "1";
+      darkdiv.style.opacity = "1";
+    }else {
+      hname.style.marginTop = "-35px";
+      hname.style.opacity = "0";
+      darkdiv.style.opacity = "0";
+  }
+}
+
+function togglemenu(){
+  var mb1 = document.getElementById("mb1");
+  var mb2 = document.getElementById("mb2");
+  var mb3 = document.getElementById("mb3");
+  var menubtn = document.getElementById("menubtn");
+  var menu = document.getElementById("menu");
+  var mo1 = document.getElementById("mo1");
+  var mo2 = document.getElementById("mo2");
+  var mo3 = document.getElementById("mo3");
+  var mo4 = document.getElementById("mo4");
+  
+  if(mb1.style.transform === "rotate(37deg)"){
+    mb1.style.transform = "rotate(0deg)";
+    mb2.style.width = "initial";
+    mb2.style.border = "1px solid white";
+    mb3.style.transform = "rotate(0deg)";
+    mo4.style.opacity = "0";
+    mo4.style.fontSize = "18px";
+    setTimeout(function(){
+      mo3.style.opacity = "0";
+      mo3.style.fontSize = "18px";
+    }, 100);
+    setTimeout(function(){
+      mo2.style.opacity = "0";
+      mo2.style.fontSize = "18px";
+    }, 150);
+    setTimeout(function(){
+      mo1.style.opacity = "0";
+      mo1.style.fontSize = "18px";
+    }, 200);
+    setTimeout(function(){
+      menu.style.background = "transparent";
+    }, 400);
+    setTimeout(function(){
+      menu.style.display = "none";
+    }, 600);
+  }
+  else{
+    mb1.style.transform = "rotate(37deg)";
+    mb2.style.width = "20px";
+    mb2.style.border = "1px solid transparent";
+    mb3.style.transform = "rotate(-36deg)";
+    menu.style.display = "block";
+    setTimeout(function(){
+      menu.style.background = "rgba(0,0,0,0.95)";
+      mo1.style.opacity = "1";
+      mo1.style.fontSize = "23px";
+    }, 200);
+    setTimeout(function(){
+      mo2.style.opacity = "1";
+      mo2.style.fontSize = "23px";
+    }, 400);
+    setTimeout(function(){
+      mo3.style.opacity = "1";
+      mo3.style.fontSize = "23px";
+    }, 600);
+    setTimeout(function(){
+      mo4.style.opacity = "1";
+      mo4.style.fontSize = "23px";
+    }, 800);
+  }
+}
+
+</script>
+
 </body>
 </html>
